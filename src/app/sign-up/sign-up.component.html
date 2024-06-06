@@ -1,0 +1,43 @@
+<html>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+        <form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+          <input formControlName="username" placeholder="Enter your user name" required>
+          <div class="fix-container">
+            <div class="error-message" *ngIf="signupForm.get('username')!.invalid && (signupForm.get('username')!.touched || formSubmitted)">
+                User name is required
+              </div>
+          </div>
+          <input formControlName="email" type="email" placeholder="Enter your email" required>
+         <div class="fix-container">
+            <div class="error-message" *ngIf="signupForm.get('email')!.invalid && (signupForm.get('email')!.touched || formSubmitted)">
+                Email is required
+              </div>
+         </div>
+          <input formControlName="password" type="password" placeholder="Enter your password" required minlength="6">
+          <div class="fix-container">
+            <div class="error-message" *ngIf="signupForm.get('password')!.invalid && (signupForm.get('password')!.touched || formSubmitted)">
+                Password is required and must be at least 6 characters long
+              </div>
+          </div>
+          <input formControlName="confirmPassword" type="password" placeholder="Confirm your password" required>
+          <div class="fix-container">
+            <div class="error-message" *ngIf="(signupForm.get('confirmPassword')!.invalid || signupForm.get('password')!.value !== signupForm.get('confirmPassword')!.value) && (signupForm.get('confirmPassword')!.touched || formSubmitted)">
+                Passwords do not match
+              </div>
+          </div>
+          <button (click)="signUp()">Sign Up</button>
+        </form>
+        <div class="small-text">Already have an account? <a href="signin">Sign In</a></div>
+      </div>
+      <div class="form-right">
+        <h1>Sign Up</h1>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+<form [formGroup]="codeForm" (ngSubmit)="verify()">
+    <input type="text" formControlName="code" placeholder="Enter 5-digit code">
+    <button type="submit">Verify</button>
+  </form>
